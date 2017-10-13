@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">VehicleController</string>
     <string name="title_name">Speed Racer</string>
+
+    <!--temporary title text-->
+    <string name="move_text">Turn Text</string>
+    <string name="turn_text">Move Text</string>
 </resources>

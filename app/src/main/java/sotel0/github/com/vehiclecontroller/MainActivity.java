@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         turnBar = (SeekBar) findViewById(R.id.turnBar);
         moveText = (TextView) findViewById(R.id.moveText);
         turnText = (TextView) findViewById(R.id.turnText);
-
     }
+
 
     private void setupClickListeners(){
 
