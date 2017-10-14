@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">VehicleController</string>
     <string name="title_name">Speed Racer</string>
-
+    <string name="btnBT_name">BT Pairing</string>
+    <string name="titleBT_name">Paired Devices</string>
     <!--temporary title text-->
     <string name="move_text">Turn Text</string>
     <string name="turn_text">Move Text</string>
