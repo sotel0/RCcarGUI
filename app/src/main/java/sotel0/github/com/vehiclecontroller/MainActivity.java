@@ -90,7 +90,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startBTActivity(){
-        if (myBluetooth.isEnabled()){
+
+        if(myBluetooth == null){
+            //Show message that the device has no bluetooth adapter
+            msg("Bluetooth Device Not Available");
+        }
+        else if(myBluetooth.isEnabled()){
             Intent intent = new Intent(this, BlueToothActivity.class);
             startActivityForResult(intent,1);
         }
