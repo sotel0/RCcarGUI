@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.nio.ByteBuffer;
 import java.util.UUID;
 
 
@@ -135,11 +137,24 @@ public class MainActivity extends AppCompatActivity {
                     barValue = Math.abs(barValue);
                 }
 
+                System.out.println(barValue + " move");
+
+
                 if (btSocket!=null) //check for connection
                 {
                     try {
                         //send the value as bytes
-                        byte[] output = Integer.toString(barValue).getBytes();
+                        byte[] output = {0,0};
+                        output[0] = (byte) (barValue & 0xFF);
+                        output[1] = (byte) ((barValue >> 8) & 0xFF);
+                        //byte[] output = ByteBuffer.allocate(2).putInt(barValue).array();
+                        //byte[] output = BigInteger.valueOf(barValue).toByteArray();
+                        //byte[] output = Integer.toString(barValue).getBytes();
+
+//                        for (byte item: output) {
+//                            btSocket.getOutputStream().write(item);
+//                        }
+
                         btSocket.getOutputStream().write(output);
                     }catch (IOException e){
                         msg("Couldn't get output stream, MoveBar");
@@ -173,11 +188,18 @@ public class MainActivity extends AppCompatActivity {
                 //prepare value to be sent
                 barValue = Math.abs(barValue);
 
+                System.out.println(barValue + " turn");
+
                 if (btSocket!=null) //check for connection
                 {
                     try {
+
                         //send the value as bytes
-                        byte[] output = Integer.toString(barValue).getBytes();
+                        //byte[] output = Integer.toString(barValue).getBytes();
+                        byte[] output = {0,0};
+                        output[0] = (byte) (barValue & 0xFF);
+                        output[1] = (byte) ((barValue >> 8) & 0xFF);
+
                         btSocket.getOutputStream().write(output);
                     }catch (IOException e){
                         msg("Couldn't get output stream, TurnBar");
