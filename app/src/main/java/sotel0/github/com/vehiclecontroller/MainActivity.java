@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isBtConnected = false;
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private ProgressDialog progress;
-    boolean inTurnRange = true;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,9 +181,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                //if you need to reduce the amount of degrees from 90 that the servo can turn
-                // 1) change the value being added to i below
-                // 2) change the max value in the seekbar for the correct range
+                //if you need to reduce the amount of degrees from 90 that the servo can turn:
+                // 1) degree = 90 - degree
+                // 2) change the value to barValue below: i + degree
+                // 3) change the max value in the seekbar: 180-(degree*2)
                 int barValue = i + 30;
 
                 //make the range display from negative to 0 to positive values
@@ -193,12 +192,6 @@ public class MainActivity extends AppCompatActivity {
 
                 //prepare value to be sent
                 barValue = barValue + 2000;
-
-//                int degreesRemoved = 30;
-//
-//                if(barValue < (0+degreesRemoved) || barValue > (180 - degreesRemoved)){
-//                    inTurnRange = false;
-//                }
 
                 System.out.println(barValue + " turn");
 
@@ -217,8 +210,6 @@ public class MainActivity extends AppCompatActivity {
                         msg("Couldn't get output stream, TurnBar");
                     }
                 }
-//                //reset to check if it is in the turn range
-//                inTurnRange = true;
             }
 
             @Override
