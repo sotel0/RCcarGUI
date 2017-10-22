@@ -5,12 +5,14 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,7 @@ import java.util.UUID;
 
 public class BlueToothActivity extends AppCompatActivity {
 
+    Button btnDisconnect;
     ListView deviceList;
     BluetoothAdapter myBluetooth = null;
     private AdapterView.OnItemClickListener myListClickListener;
@@ -34,12 +37,14 @@ public class BlueToothActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blue_tooth);
 
+
         initializeVariables();
 
         findPairedDevices();
     }
 
     private void initializeVariables(){
+        btnDisconnect = (Button) findViewById(R.id.btn_disconnet);
         deviceList = (ListView) findViewById(R.id.deviceList);
 
         //on click listener to get the address of device
@@ -57,6 +62,17 @@ public class BlueToothActivity extends AppCompatActivity {
 
             }
         };
+
+        //on click listener to disconnect from device
+        btnDisconnect.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                //set the result code to tell to disconnect
+                Intent intent = new Intent();
+                setResult(2, intent);
+                finish();
+            }
+        });
     }
 
     private void findPairedDevices(){
