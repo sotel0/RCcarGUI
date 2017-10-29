@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     TextView turnText;
     Button btnPairing;
 
+    //flip the turning controls
+    Boolean flipTurn = Boolean.TRUE;
+
     // for bluetooth configuration
     private BluetoothAdapter bluetoothDevice = null;
     private String address = null;
@@ -56,10 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        System.out.println("result code");
-        System.out.println(resultCode);
-        System.out.println("request code");
-        System.out.println(requestCode);
+
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
@@ -119,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
         else if(bluetoothDevice.isEnabled()){
             Intent intent = new Intent(this, BlueToothActivity.class);
             startActivityForResult(intent,1);
+        } else{
+            msg("Enable Bluetooth", 0);
         }
     }
 
@@ -149,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //prepare value to be sent
                 if(barValue < 0){
+
                     barValue = Math.abs(barValue);
                     //distinguish reverse direction
                     barValue = barValue + 1000;
@@ -163,9 +166,17 @@ public class MainActivity extends AppCompatActivity {
                 {
                     try {
                         //send the value as bytes
+//                        if(reverseP = true){
+//                            barValue = 1255;
+//                        }else{
+//                            barValue = 255;
+//                        }
+
                         byte[] output = {0,0};
                         output[0] = (byte) (barValue & 0xFF);
                         output[1] = (byte) ((barValue >> 8) & 0xFF);
+
+                        //reverseP = false
                         //byte[] output = ByteBuffer.allocate(2).putInt(barValue).array();
                         //byte[] output = BigInteger.valueOf(barValue).toByteArray();
                         //byte[] output = Integer.toString(barValue).getBytes();
@@ -175,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
 //                        }
 
                         btSocket.getOutputStream().write(output);
+
+
                     }catch (IOException e){
                         msg("no outputStream to write",0);
                     }
@@ -204,6 +217,19 @@ public class MainActivity extends AppCompatActivity {
                 // 2) change the value to barValue below: i + degree
                 // 3) change the max value in the seekbar: 180-(degree*2)
                 int barValue = i + 30;
+
+                //flip value from 0 to max centered at 90
+                //used to flip turn controls if needed
+                if( flipTurn == Boolean.TRUE) {
+                    if (barValue <= 90) {
+                        int val = 90 - barValue;
+                        barValue = 90 + val;
+                    } else if (barValue > 90) {
+                        int val = barValue - 90;
+                        barValue = 90 - val;
+                    }
+                }
+
 
                 //make the range display from negative to 0 to positive values
                 turnText.setText(String.valueOf(barValue));
