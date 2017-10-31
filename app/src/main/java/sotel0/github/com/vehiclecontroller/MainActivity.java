@@ -5,11 +5,13 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     TextView moveText;
     TextView turnText;
     Button btnPairing;
+    ImageView titleImg;
+    ImageView imageRight;
+    ImageView imageLeft;
+
 
     //flip the turning controls
     Boolean flipTurn = Boolean.TRUE;
@@ -53,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
         //create all the onclick listeners
         setupClickListeners();
 
-        //set the default value of seekBars to midpoint
-        moveBar.setProgress(moveBar.getMax()/2);
-        turnBar.setProgress(turnBar.getMax()/2);
+        //start default values for widgets
+        setDefaultValues();
+
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -84,6 +90,34 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void initializeVariable() {
+        moveBar = (SeekBar) findViewById(R.id.moveBar);
+        turnBar = (SeekBar) findViewById(R.id.turnBar);
+        moveText = (TextView) findViewById(R.id.moveText);
+        turnText = (TextView) findViewById(R.id.turnText);
+        btnPairing = (Button) findViewById(R.id.bluetoothBtn);
+        titleImg = (ImageView) findViewById(R.id.titleImage);
+        imageLeft = (ImageView) findViewById(R.id.imageLeft);
+        imageRight = (ImageView) findViewById(R.id.imageRight);
+
+    }
+
+    private void setDefaultValues(){
+        //set the default value of seekBars to midpoint
+        moveBar.setProgress(moveBar.getMax()/2);
+        turnBar.setProgress(turnBar.getMax()/2);
+
+//        //set the title image
+        titleImg.setImageResource(R.drawable.mellowyellow);
+        titleImg.setScaleType(ImageView.ScaleType.FIT_XY);
+
+//        //set direction letter images
+        imageRight.setImageResource(R.drawable.inkright);
+        imageRight.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageLeft.setImageResource(R.drawable.inkleft);
+        imageLeft.setScaleType(ImageView.ScaleType.FIT_XY);
+    }
+
     private void setupBluetooth(){
         bluetoothDevice = BluetoothAdapter.getDefaultAdapter();
         if(bluetoothDevice == null){
@@ -101,14 +135,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void initializeVariable() {
-        moveBar = (SeekBar) findViewById(R.id.moveBar);
-        turnBar = (SeekBar) findViewById(R.id.turnBar);
-        moveText = (TextView) findViewById(R.id.moveText);
-        turnText = (TextView) findViewById(R.id.turnText);
-        btnPairing = (Button) findViewById(R.id.bluetoothBtn);
 
-    }
 
     private void startBTActivity(){
 
@@ -266,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
                 seekBar.setProgress(midpoint);
             }
         });
+
     }
 
     private void msg(String s, int size) {

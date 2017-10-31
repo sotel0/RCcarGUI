@@ -4,6 +4,8 @@
     <string name="btnBT_name">BT Connections</string>
     <string name="titleBT_name">Paired Devices</string>
     <string name="disconnect_btn">Disconnect</string>
+    <string name="title_description">Mellow Yellow</string>
+    <string name="turn_toggle">Tighter Turn</string>
     <!--temporary title text-->
     <string name="move_text">Move Text</string>
     <string name="turn_text">Turn Text</string>
