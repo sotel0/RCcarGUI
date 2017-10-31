@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView titleImg;
     ImageView imageRight;
     ImageView imageLeft;
+    ImageView imageForward;
+    ImageView imageReverse;
 
 
     //flip the turning controls
@@ -99,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
         titleImg = (ImageView) findViewById(R.id.titleImage);
         imageLeft = (ImageView) findViewById(R.id.imageLeft);
         imageRight = (ImageView) findViewById(R.id.imageRight);
-
+        imageForward = (ImageView) findViewById(R.id.imageForward);
+        imageReverse = (ImageView) findViewById(R.id.imageReverse);
     }
 
     private void setDefaultValues(){
@@ -112,10 +115,14 @@ public class MainActivity extends AppCompatActivity {
         titleImg.setScaleType(ImageView.ScaleType.FIT_XY);
 
 //        //set direction letter images
-        imageRight.setImageResource(R.drawable.inkright);
+        imageRight.setImageResource(R.drawable.inkright2);
         imageRight.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageLeft.setImageResource(R.drawable.inkleft);
+        imageLeft.setImageResource(R.drawable.inkleft2);
         imageLeft.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageForward.setImageResource(R.drawable.inkforward2);
+        imageForward.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageReverse.setImageResource(R.drawable.inkright2);
+        imageReverse.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
     private void setupBluetooth(){
