@@ -156,7 +156,8 @@
             app:srcCompat="@android:drawable/ic_menu_gallery"
             tools:ignore="ContentDescription"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="26dp" />
 
         <Button
             android:id="@+id/bluetoothBtn"
@@ -177,19 +178,17 @@
             android:id="@+id/turnToggleText"
             android:layout_width="60dp"
             android:layout_height="53dp"
-            android:layout_alignBottom="@+id/bluetoothBtn"
-            android:layout_toStartOf="@+id/turnToggle"
             android:gravity="center"
             android:text="@string/turn_toggle"
             tools:layout_editor_absoluteX="327dp"
-            tools:layout_editor_absoluteY="153dp" />
+            tools:layout_editor_absoluteY="153dp"
+            android:layout_alignTop="@+id/bluetoothBtn"
+            android:layout_toStartOf="@+id/turnToggle" />
 
         <ToggleButton
             android:id="@+id/turnToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/turnToggleText"
-            android:layout_alignParentEnd="true"
             android:text="ToggleButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.154"
@@ -197,7 +196,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.199"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:layout_alignBottom="@+id/turnToggleText"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
@@ -207,7 +208,6 @@
         android:layout_height="132dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="275dp"
-        android:layout_marginRight="274dp"
         android:layout_marginTop="8dp"
         android:rotation="270"
         app:layout_constraintBottom_toBottomOf="parent"

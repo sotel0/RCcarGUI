@@ -11,10 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     TextView moveText;
     TextView turnText;
     Button btnPairing;
+    ToggleButton turnToggle;
     ImageView titleImg;
     ImageView imageRight;
     ImageView imageLeft;
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //flip the turning controls
-    Boolean flipTurn = Boolean.TRUE;
+    Boolean flipTurn = Boolean.FALSE;
 
     // for bluetooth configuration
     private BluetoothAdapter bluetoothDevice = null;
@@ -103,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         imageRight = (ImageView) findViewById(R.id.imageRight);
         imageForward = (ImageView) findViewById(R.id.imageForward);
         imageReverse = (ImageView) findViewById(R.id.imageReverse);
+        turnToggle = (ToggleButton) findViewById(R.id.turnToggle);
     }
 
     private void setDefaultValues(){
@@ -123,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
         imageForward.setScaleType(ImageView.ScaleType.FIT_XY);
         imageReverse.setImageResource(R.drawable.inkright2);
         imageReverse.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        //set default turn toggle value
     }
 
     private void setupBluetooth(){
@@ -184,14 +190,15 @@ public class MainActivity extends AppCompatActivity {
                 moveText.setText(String.valueOf(barValue));
 
                 //prepare value to be sent
-                if(barValue < 0){
+                //if(barValue < 0){
 
-                    barValue = Math.abs(barValue);
+                //    barValue = Math.abs(barValue);
+
                     //distinguish reverse direction
-                    barValue = barValue + 1000;
-                }else {
-                    barValue = Math.abs(barValue);
-                }
+                    //barValue = barValue + 1000;
+                //}else {
+                barValue = Math.abs(barValue);
+                //}
 
                 System.out.println(barValue + " move");
 
@@ -200,24 +207,15 @@ public class MainActivity extends AppCompatActivity {
                 {
                     try {
                         //send the value as bytes
-//                        if(reverseP = true){
-//                            barValue = 1255;
-//                        }else{
-//                            barValue = 255;
-//                        }
 
                         byte[] output = {0,0};
                         output[0] = (byte) (barValue & 0xFF);
                         output[1] = (byte) ((barValue >> 8) & 0xFF);
 
-                        //reverseP = false
                         //byte[] output = ByteBuffer.allocate(2).putInt(barValue).array();
                         //byte[] output = BigInteger.valueOf(barValue).toByteArray();
                         //byte[] output = Integer.toString(barValue).getBytes();
 
-//                        for (byte item: output) {
-//                            btSocket.getOutputStream().write(item);
-//                        }
 
                         btSocket.getOutputStream().write(output);
 
@@ -271,6 +269,13 @@ public class MainActivity extends AppCompatActivity {
                 //prepare value to be sent
                 barValue = barValue + 2000;
 
+                if(flipTurn){
+                    barValue = barValue + 1000;
+                    //so barValue = 3000
+                }
+
+
+
                 System.out.println(barValue + " turn");
 
                 if (btSocket!=null) //check for connection
@@ -298,6 +303,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 seekBar.setProgress(midpoint);
+            }
+        });
+
+        turnToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The toggle is enabled
+                    flipTurn = Boolean.TRUE;
+                } else {
+                    // The toggle is disabled
+                    flipTurn = Boolean.FALSE;
+                }
             }
         });
 
