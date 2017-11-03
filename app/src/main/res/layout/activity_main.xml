@@ -18,10 +18,10 @@
         android:text="@string/turn_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintVertical_bias="0.824" />
 
     <TextView
         android:id="@+id/moveText"
@@ -111,7 +111,7 @@
         android:layout_height="76dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
@@ -170,10 +170,10 @@
 
     <RelativeLayout
         android:id="@+id/rLayoutSettings"
-        android:layout_width="411dp"
-        android:layout_height="257dp"
+        android:layout_width="431dp"
+        android:layout_height="265dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -181,18 +181,19 @@
 
         <ImageView
             android:id="@+id/imageTurn"
-            android:layout_width="92dp"
-            android:layout_height="72dp"
+            android:layout_width="112dp"
+            android:layout_height="88dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.262"
+            app:layout_constraintHorizontal_bias="0.87"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.097"
+            app:layout_constraintVertical_bias="0.416"
             app:srcCompat="@android:drawable/ic_menu_gallery"
             tools:ignore="ContentDescription"
-            android:layout_above="@+id/turnToggle"
-            android:layout_alignEnd="@+id/turnToggle" />
+            android:layout_marginTop="42dp"
+            android:layout_below="@+id/bluetoothBtn"
+            android:layout_alignStart="@+id/bluetoothBtn" />
 
         <ToggleButton
             android:id="@+id/turnToggle"
@@ -206,14 +207,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.276"
             tools:ignore="HardcodedText"
-            android:layout_below="@+id/titleImage"
-            android:layout_alignStart="@+id/bluetoothBtn"
-            android:layout_marginStart="15dp" />
+            android:layout_below="@+id/imageTurn"
+            android:layout_alignStart="@+id/imageTurn"
+            android:layout_marginStart="12dp" />
 
         <Button
             android:id="@+id/bluetoothBtn"
             android:layout_width="122dp"
             android:layout_height="54dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginTop="13dp"
             android:text="@string/btnBT_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.18"
@@ -221,10 +224,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.163"
-            android:layout_marginEnd="13dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="12dp" />
+            android:layout_alignParentEnd="true" />
 
         <ImageView
             android:id="@+id/titleImage"
@@ -238,7 +239,7 @@
             app:layout_constraintVertical_bias="0.068"
             app:srcCompat="@android:drawable/ic_menu_gallery"
             tools:ignore="ContentDescription"
-            android:layout_alignTop="@+id/bluetoothBtn"
+            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
     </RelativeLayout>
 
