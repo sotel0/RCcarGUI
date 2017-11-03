@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageLeft;
     ImageView imageForward;
     ImageView imageReverse;
+    ImageView imageTurn;
 
 
     //flip the turning controls
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         imageRight = (ImageView) findViewById(R.id.imageRight);
         imageForward = (ImageView) findViewById(R.id.imageForward);
         imageReverse = (ImageView) findViewById(R.id.imageReverse);
+        imageTurn = (ImageView) findViewById(R.id.imageTurn);
         turnToggle = (ToggleButton) findViewById(R.id.turnToggle);
     }
 
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         turnBar.setProgress(turnBar.getMax()/2);
 
 //        //set the title image
-        titleImg.setImageResource(R.drawable.mellowyellow);
+        titleImg.setImageResource(R.drawable.mellowyellow2);
         titleImg.setScaleType(ImageView.ScaleType.FIT_XY);
 
 //        //set direction letter images
@@ -128,7 +130,8 @@ public class MainActivity extends AppCompatActivity {
         imageReverse.setImageResource(R.drawable.inkright2);
         imageReverse.setScaleType(ImageView.ScaleType.FIT_XY);
 
-        //set default turn toggle value
+        imageTurn.setImageResource(R.drawable.turn);
+        imageTurn.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
     private void setupBluetooth(){

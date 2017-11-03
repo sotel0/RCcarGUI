@@ -41,6 +41,70 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
 
+    <ImageView
+        android:id="@+id/imageForward"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.052"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageReverse"
+        android:layout_width="81dp"
+        android:layout_height="63dp"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.902"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        tools:ignore="ContentDescription" />
+
+    <RelativeLayout
+        android:id="@+id/rLayoutMoveBar"
+        android:layout_width="718dp"
+        android:layout_height="132dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="275dp"
+        android:layout_marginTop="8dp"
+        android:rotation="270"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497">
+
+        <SeekBar
+            android:id="@+id/moveBar"
+            style="@style/Widget.AppCompat.SeekBar"
+            android:layout_width="340dp"
+            android:layout_height="52dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:max="510"
+            android:rotation="0"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.704" />
+
+    </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/rLayoutTurnBar"
         android:layout_width="461dp"
@@ -101,47 +165,66 @@
             app:layout_constraintVertical_bias="0.89"
             app:srcCompat="@android:drawable/ic_menu_gallery"
             tools:ignore="ContentDescription" />
+
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageForward"
-        android:layout_width="57dp"
-        android:layout_height="57dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="13dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/imageReverse"
-        android:layout_width="81dp"
-        android:layout_height="63dp"
-        android:layout_alignParentEnd="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.902"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        tools:ignore="ContentDescription" />
 
     <RelativeLayout
         android:id="@+id/rLayoutSettings"
-        android:layout_width="279dp"
-        android:layout_height="186dp"
+        android:layout_width="411dp"
+        android:layout_height="257dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092">
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageTurn"
+            android:layout_width="92dp"
+            android:layout_height="72dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.262"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.097"
+            app:srcCompat="@android:drawable/ic_menu_gallery"
+            tools:ignore="ContentDescription"
+            android:layout_above="@+id/turnToggle"
+            android:layout_alignEnd="@+id/turnToggle" />
+
+        <ToggleButton
+            android:id="@+id/turnToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.236"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.276"
+            tools:ignore="HardcodedText"
+            android:layout_below="@+id/titleImage"
+            android:layout_alignStart="@+id/bluetoothBtn"
+            android:layout_marginStart="15dp" />
+
+        <Button
+            android:id="@+id/bluetoothBtn"
+            android:layout_width="122dp"
+            android:layout_height="54dp"
+            android:text="@string/btnBT_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.163"
+            android:layout_marginEnd="13dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp" />
 
         <ImageView
             android:id="@+id/titleImage"
@@ -155,86 +238,8 @@
             app:layout_constraintVertical_bias="0.068"
             app:srcCompat="@android:drawable/ic_menu_gallery"
             tools:ignore="ContentDescription"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="26dp" />
-
-        <Button
-            android:id="@+id/bluetoothBtn"
-            android:layout_width="122dp"
-            android:layout_height="54dp"
-            android:text="@string/btnBT_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.088"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="18dp" />
-
-        <TextView
-            android:id="@+id/turnToggleText"
-            android:layout_width="60dp"
-            android:layout_height="53dp"
-            android:gravity="center"
-            android:text="@string/turn_toggle"
-            tools:layout_editor_absoluteX="327dp"
-            tools:layout_editor_absoluteY="153dp"
             android:layout_alignTop="@+id/bluetoothBtn"
-            android:layout_toStartOf="@+id/turnToggle" />
-
-        <ToggleButton
-            android:id="@+id/turnToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ToggleButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.154"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.199"
-            tools:ignore="HardcodedText"
-            android:layout_alignBottom="@+id/turnToggleText"
-            android:layout_alignParentEnd="true" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rLayoutMoveBar"
-        android:layout_width="718dp"
-        android:layout_height="132dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="275dp"
-        android:layout_marginTop="8dp"
-        android:rotation="270"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497">
-
-        <SeekBar
-            android:id="@+id/moveBar"
-            style="@style/Widget.AppCompat.SeekBar"
-            android:layout_width="340dp"
-            android:layout_height="52dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:max="510"
-            android:rotation="0"
-            android:scrollbarAlwaysDrawHorizontalTrack="false"
-            android:scrollbarAlwaysDrawVerticalTrack="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.704" />
-
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
