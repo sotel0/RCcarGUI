@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         imageReverse.setImageResource(R.drawable.inkright2);
         imageReverse.setScaleType(ImageView.ScaleType.FIT_XY);
 
-        imageTurn.setImageResource(R.drawable.turn);
+        imageTurn.setImageResource(R.drawable.turn3);
         imageTurn.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 
