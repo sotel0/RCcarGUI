@@ -5,7 +5,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageReverse;
     ImageView imageTurn;
 
+    //engage four wheel turn
+    Boolean tighterTurn = Boolean.FALSE;
 
     //flip the turning controls
     Boolean flipTurn = Boolean.FALSE;
@@ -265,19 +266,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-
                 //make the range display from negative to 0 to positive values
                 turnText.setText(String.valueOf(barValue));
 
                 //prepare value to be sent
                 barValue = barValue + 2000;
 
-                if(flipTurn){
+                if(tighterTurn){
                     barValue = barValue + 1000;
                     //so barValue = 3000
                 }
-
-
 
                 System.out.println(barValue + " turn");
 
@@ -313,10 +311,10 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // The toggle is enabled
-                    flipTurn = Boolean.TRUE;
+                    tighterTurn = Boolean.TRUE;
                 } else {
                     // The toggle is disabled
-                    flipTurn = Boolean.FALSE;
+                    tighterTurn = Boolean.FALSE;
                 }
             }
         });
