@@ -194,15 +194,15 @@ public class MainActivity extends AppCompatActivity {
                 moveText.setText(String.valueOf(barValue));
 
                 //prepare value to be sent
-                //if(barValue < 0){
+                if(barValue < 0){
 
-                //    barValue = Math.abs(barValue);
-
-                    //distinguish reverse direction
-                    //barValue = barValue + 1000;
-                //}else {
+                    barValue = Math.abs(barValue);
+////
+//                    distinguish reverse direction
+                    barValue = barValue + 1000;
+               }else {
                 barValue = Math.abs(barValue);
-                //}
+                }
 
                 System.out.println(barValue + " move");
 
