@@ -225,7 +225,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                     }catch (IOException e){
-                        msg("no outputStream to write",0);
+                        //error message, it would display constantly when error occurred
+//                        msg("no outputStream to write",0);
                     }
                 }
             }
@@ -291,7 +292,8 @@ public class MainActivity extends AppCompatActivity {
 
                         btSocket.getOutputStream().write(output);
                     }catch (IOException e){
-                        msg("No outputStream to write",0);
+                        //error message, it would display constantly when error occurred
+//                        msg("No outputStream to write",0);
                     }
                 }
             }
